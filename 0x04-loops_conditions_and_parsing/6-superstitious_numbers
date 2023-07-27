@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# This Bash script displays numbers from 1 to 20
+
+myvar=1
+
+while [ "$myvar" -le 20 ]
+do
+	case "$myvar" in
+		4 )
+			echo "$myvar"
+			echo "bad luck from China" ;;
+		9 )
+			echo "$myvar"
+			echo "bad luck from Japan" ;;
+		17 )
+			echo "$myvar"
+			echo "bad luck from Italy" ;;
+		* )
+			echo "$myvar"
+	esac
+
+	myvar=$(( "$myvar" +1 ))
+done
