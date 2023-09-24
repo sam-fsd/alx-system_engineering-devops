@@ -1,0 +1,4 @@
+Host 333419-web-01
+    HostName 8.8.8.8
+    IdentityFile ~/.ssh/school
+    PasswordAuthentication no
