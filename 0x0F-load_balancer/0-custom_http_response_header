@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+# Configure web-02 to be identical to web-01
+# Add a custom header to our HTTP header (X-Serverd-By)
+
+sudo apt-get -y update
+sudo apt-get install -y nginx
+sudo chmod go+w /etc/nginx/sites-available/default
+sudo chmod -R 755 /var/www
+sudo touch /var/www/html/index.html
+sudo chmod go+w /var/www/html/index.html
+echo "Hello World!" > /var/www/html/index.html
+sudo touch /var/www/html/404.html
+sudo chmod go+w /var/www/html/404.html
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html > /dev/null
+
+sudo bash -c 'echo "server {
+    listen 80;
+    listen [::]:80 default_server;
+    root /var/www/html;
+    index index.html;
+
+    add_header X-Served-By \$hostname;
+    location /redirect_me {
+        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+    }
+
+    error_page 404 /404.html;
+    location /404.html {
+        try_files \$uri \$uri/ =404;
+    }
+}
+" > /etc/nginx/sites-enabled/default'
+
+sudo service nginx restart
