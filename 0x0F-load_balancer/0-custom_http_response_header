@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # Configure web-02 to be identical to web-01
 # Add a custom header to our HTTP header (X-Serverd-By)
 
