@@ -16,7 +16,7 @@ backend web-backend
    server 333419-web-02 100.26.226.192:80 check"
 
 sudo chmod go+w /etc/haproxy/haproxy.cfg
-sudo echo "$haproxyconfig" >> /etc/haproxy/haproxy.cfg
+echo "$haproxyconfig" | sudo tee -a /etc/haproxy/haproxy.cfg > /dev/null
 sudo chmod go+w /etc/default/haproxy
-sudo echo "ENABLED=1" >> /etc/default/haproxy
+echo "ENABLED=1" | sudo tee -a /etc/default/haproxy > /dev/null
 sudo service haproxy restart
