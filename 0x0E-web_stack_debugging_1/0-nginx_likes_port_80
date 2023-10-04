@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Changes the port value from 8080 to 80
-sed -i -e 's/8080/80/g' /etc/nginx/sites-enabled/default > /dev/null 2>&1
 sed -i -e 's/8080/80/g' /etc/nginx/sites-avaliable/default > /dev//null 2>&1
+sudo rm /etc/nginx/sites-enabled/default
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
 sudo service nginx restart
