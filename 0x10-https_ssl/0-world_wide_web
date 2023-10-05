@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Does DNS lookup on a subdomain
+# Outputs its RECORD_TYPE & DESTINATION
+
+domain="$1"
+subdomain_info() {
+	local subdomain="$1"
+	url="$subdomain.$domain"
+
+	r_type=$(dig "$url" | grep -A1 'ANSWER SECTION:' | awk 'NR==2' | awk '{print $4}')
+	ip=$(dig +short "$url")
+
+	echo "The subdomain $subdomain is a $r_type record and points to $ip"
+}
+if [ "$2" ];
+then
+	subdomain_info "$2"
+else
+	subdomain_info "www"
+	subdomain_info "lb-01"
+	subdomain_info "web-01"
+	subdomain_info "web-02"
+fi
