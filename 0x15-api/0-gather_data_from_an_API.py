@@ -27,4 +27,4 @@ if __name__ == '__main__':
 
     for task in emp_todos:
         if task.get('completed'):
-            print(f"     {task.get('title')}")
+            print(f"\t {task.get('title')}")
