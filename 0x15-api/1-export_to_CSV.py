@@ -1,5 +1,12 @@
 #!/usr/bin/python3
-"""Communicate with a RESTful API."""
+"""Communicate with a RESTful API.
+
+This module communicates with a RESTful API to fetch and export user-specific data
+in CSV format.
+
+Usage:
+    $ python3 your_script_name.py user_id
+"""
 import csv
 import requests
 from sys import argv
