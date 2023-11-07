@@ -4,7 +4,8 @@ import requests
 
 
 def top_ten(subreddit):
-    """Prints the titles of the first 10 hot posts listed for a given subreddit"""
+    """Prints the titles of the first 10 hot posts listed for a given
+       subreddit"""
     url = 'https://oauth.reddit.com/r/{}/hot.json'.format(subreddit)
     user_agent = (
         'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
